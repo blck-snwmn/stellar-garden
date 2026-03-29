@@ -1,5 +1,5 @@
-import './App.css'
-import StarField from './components/StarField'
+import "./App.css";
+import StarField from "./components/StarField";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <p>move your mouse</p>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -22,9 +22,9 @@ interface LayerConfig {
 }
 
 const LAYER_CONFIGS = {
-  far:  { radius: [0.3, 0.8],  drift: [0.00003, 0.00008], parallax: 0.002, opacity: [0.2, 0.5] },
-  mid:  { radius: [0.6, 1.5],  drift: [0.00008, 0.00015], parallax: 0.005, opacity: [0.4, 0.75] },
-  near: { radius: [1.2, 2.5],  drift: [0.00015, 0.00025], parallax: 0.012, opacity: [0.6, 1.0] },
+  far: { radius: [0.3, 0.8], drift: [0.00003, 0.00008], parallax: 0.002, opacity: [0.2, 0.5] },
+  mid: { radius: [0.6, 1.5], drift: [0.00008, 0.00015], parallax: 0.005, opacity: [0.4, 0.75] },
+  near: { radius: [1.2, 2.5], drift: [0.00015, 0.00025], parallax: 0.012, opacity: [0.6, 1.0] },
 } satisfies Record<string, LayerConfig>;
 
 type Layer = keyof typeof LAYER_CONFIGS;
@@ -69,7 +69,9 @@ function createStars(count: number, layer: Layer): Star[] {
       baseOpacity: randRange(...config.opacity),
       twinkleSpeed: randRange(0.008, 0.033),
       twinkleOffset: Math.random() * TWO_PI,
-      r, g, b,
+      r,
+      g,
+      b,
       rgbString: `rgb(${r},${g},${b})`,
     };
   });
@@ -141,7 +143,7 @@ export default function StarField() {
 
         const parallaxX = mouseX * star.parallaxFactor * w;
         const parallaxY = mouseY * star.parallaxFactor * h;
-        const drawX = ((baseX + parallaxX) % w + w) % w;
+        const drawX = (((baseX + parallaxX) % w) + w) % w;
         const drawY = baseY + parallaxY;
 
         const twinkle = Math.sin(time * star.twinkleSpeed + star.twinkleOffset);
@@ -149,17 +151,11 @@ export default function StarField() {
 
         if (star.radius > GLOW_THRESHOLD) {
           const glowRadius = star.radius * GLOW_RADIUS_SCALE;
-          const glow = ctx.createRadialGradient(
-            drawX, drawY, 0,
-            drawX, drawY, glowRadius,
-          );
+          const glow = ctx.createRadialGradient(drawX, drawY, 0, drawX, drawY, glowRadius);
           glow.addColorStop(0, `rgba(${star.r},${star.g},${star.b},${alpha * GLOW_ALPHA_SCALE})`);
           glow.addColorStop(1, "rgba(0,0,0,0)");
           ctx.fillStyle = glow;
-          ctx.fillRect(
-            drawX - glowRadius, drawY - glowRadius,
-            glowRadius * 2, glowRadius * 2,
-          );
+          ctx.fillRect(drawX - glowRadius, drawY - glowRadius, glowRadius * 2, glowRadius * 2);
         }
 
         ctx.globalAlpha = alpha;
