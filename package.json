@@ -11,11 +11,15 @@
 		"fmt": "oxfmt --write src/",
 		"fmt:check": "oxfmt --check src/",
 		"preview": "pnpm run build && vite preview",
-		"deploy": "pnpm run build && wrangler deploy"
+		"deploy": "pnpm run build && wrangler deploy",
+		"studio": "remotion studio remotion/index.ts",
+		"render": "remotion render remotion/index.ts StarField out/video.mp4"
 	},
 	"dependencies": {
+		"@remotion/cli": "^4.0.443",
 		"react": "^19.2.0",
-		"react-dom": "^19.2.0"
+		"react-dom": "^19.2.0",
+		"remotion": "^4.0.443"
 	},
 	"devDependencies": {
 		"@cloudflare/vite-plugin": "^1.30.2",

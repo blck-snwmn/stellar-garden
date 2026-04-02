@@ -23,6 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# Remotion
+out/
+
 # wrangler files
 .wrangler
 .dev.vars*
