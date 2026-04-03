@@ -39,6 +39,13 @@ const MAG_CDF_RANGE = Math.pow(10, 0.5 * MAG_MAX) - MAG_CDF_BASE;
 /** Total number of stars to generate (viewport clips ~60%, so this is intentionally high) */
 const STAR_COUNT = 14500;
 
+/**
+ * Atmospheric extinction: stars near the horizon (far from pole) are dimmed
+ * because their light passes through more atmosphere.
+ * The parameter controls how aggressively opacity drops off with distance.
+ */
+const EXTINCTION_STRENGTH = 0.7;
+
 interface Star {
   /** Distance from rotation center (multiplied by diagonal length for px) */
   distance: number;
@@ -160,7 +167,10 @@ function drawStars(
     if (drawX < -10 || drawX > w + 10 || drawY < -10 || drawY > h + 10) continue;
 
     const twinkle = Math.sin(time * star.twinkleSpeed + star.twinkleOffset);
-    const alpha = star.baseOpacity * (TWINKLE_BASE + twinkle * TWINKLE_RANGE);
+    // Atmospheric extinction: dim stars further from the pole (horizon direction)
+    const normalizedDist = star.distance / STAR_DISTANCE[1];
+    const extinction = 1 - normalizedDist * normalizedDist * EXTINCTION_STRENGTH;
+    const alpha = star.baseOpacity * (TWINKLE_BASE + twinkle * TWINKLE_RANGE) * extinction;
 
     if (star.radius > GLOW_THRESHOLD) {
       const glowRadius = star.radius * GLOW_RADIUS_SCALE;
