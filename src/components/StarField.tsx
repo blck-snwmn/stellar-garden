@@ -197,13 +197,13 @@ function drawPolaris(
 ): void {
   const glowRadius = 8;
   const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, glowRadius);
-  glow.addColorStop(0, "rgba(220,230,255,0.25)");
+  glow.addColorStop(0, "rgba(255,248,235,0.25)");
   glow.addColorStop(1, "rgba(0,0,0,0)");
   ctx.fillStyle = glow;
   ctx.fillRect(cx - glowRadius, cy - glowRadius, glowRadius * 2, glowRadius * 2);
 
   ctx.globalAlpha = 0.95;
-  ctx.fillStyle = "rgb(220,230,255)";
+  ctx.fillStyle = "rgb(255,248,235)";
   ctx.beginPath();
   ctx.arc(cx, cy, 2, 0, TWO_PI);
   ctx.fill();
