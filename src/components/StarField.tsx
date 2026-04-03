@@ -7,10 +7,10 @@ const GLOW_ALPHA_SCALE = 0.15;
 const TWINKLE_BASE = 0.88;
 const TWINKLE_RANGE = 0.12;
 
-/** 全星共通の角速度 (rad/frame) */
+/** Angular velocity shared by all stars (rad/frame) */
 const ROTATION_SPEED = 0.0003;
 
-/** 回転中心（正規化座標） */
+/** Rotation center (normalized coordinates) */
 const CENTER_X = 0.5;
 const CENTER_Y = 0.54;
 
@@ -36,9 +36,9 @@ const LAYER_CONFIGS = {
 type Layer = keyof typeof LAYER_CONFIGS;
 
 interface Star {
-  /** 回転中心からの距離（px 計算時に対角線長を掛ける） */
+  /** Distance from rotation center (multiplied by diagonal length for px) */
   distance: number;
-  /** 初期角度 (rad) */
+  /** Initial angle (rad) */
   angle: number;
   radius: number;
   baseOpacity: number;
@@ -117,7 +117,7 @@ function drawStars(
     const drawX = cx + dist * Math.cos(currentAngle);
     const drawY = cy + dist * Math.sin(currentAngle);
 
-    // 画面外なら描画スキップ
+    // Skip stars outside the viewport
     if (drawX < -10 || drawX > w + 10 || drawY < -10 || drawY > h + 10) continue;
 
     const twinkle = Math.sin(time * star.twinkleSpeed + star.twinkleOffset);
@@ -140,7 +140,7 @@ function drawStars(
   }
 }
 
-/** 北極星を描画 */
+/** Draw Polaris (the pole star) */
 function drawPolaris(
   ctx: CanvasRenderingContext2D,
   cx: number,
@@ -161,14 +161,14 @@ function drawPolaris(
 }
 
 interface StarFieldProps {
-  /** 外部からフレーム番号を指定する場合（Remotion 用）。未指定なら rAF で自走。 */
+  /** External frame number (for Remotion). If omitted, runs via rAF. */
   frame?: number;
-  /** 固定サイズ。未指定なら window サイズに追従。 */
+  /** Fixed size. If omitted, follows window size. */
   width?: number;
   height?: number;
-  /** 回転速度の倍率（デフォルト: 1） */
+  /** Rotation speed multiplier (default: 1) */
   speedMultiplier?: number;
-  /** 星生成用の乱数関数（デフォルト: Math.random） */
+  /** Random function for star generation (default: Math.random) */
   rand?: () => number;
 }
 
@@ -188,7 +188,7 @@ export default function StarField({
 
   const isExternalFrame = externalFrame != null;
 
-  // Remotion モード
+  // Remotion mode: render on each frame change
   useEffect(() => {
     if (!isExternalFrame) return;
 
@@ -211,7 +211,7 @@ export default function StarField({
     ctx.globalAlpha = 1;
   }, [isExternalFrame, externalFrame, fixedWidth, fixedHeight, speedMultiplier]);
 
-  // インタラクティブモード
+  // Interactive mode: self-running via rAF
   useEffect(() => {
     if (isExternalFrame) return;
 
