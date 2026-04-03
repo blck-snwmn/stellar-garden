@@ -7,7 +7,6 @@ function App() {
       <StarField />
       <div className="content">
         <h1>Stellar Garden</h1>
-        <p>move your mouse</p>
       </div>
     </>
   );
