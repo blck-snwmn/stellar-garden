@@ -26,21 +26,18 @@ type Range = [min: number, max: number];
  * visual speed, so varying it per layer would also change star distribution.
  * Like real celestial motion, all layers share the same distance range.
  */
-const STAR_DISTANCE: Range = [0.0, 0.8];
+const STAR_DISTANCE: Range = [0.008, 0.8];
 
-/** Layers only control appearance (size and brightness) */
-interface LayerConfig {
-  radius: Range;
-  opacity: Range;
-}
+/** Apparent magnitude range for generated stars */
+const MAG_MIN = 1.0;
+const MAG_MAX = 6.5;
 
-const LAYER_CONFIGS = {
-  far: { radius: [0.5, 0.8], opacity: [0.3, 0.5] },
-  mid: { radius: [1.0, 1.8], opacity: [0.5, 0.8] },
-  near: { radius: [2.0, 3.0], opacity: [0.7, 1.0] },
-} satisfies Record<string, LayerConfig>;
+/** Pre-computed constants for magnitude inverse-CDF: N(m) ∝ 10^(0.5·m) */
+const MAG_CDF_BASE = Math.pow(10, 0.5 * MAG_MIN);
+const MAG_CDF_RANGE = Math.pow(10, 0.5 * MAG_MAX) - MAG_CDF_BASE;
 
-type Layer = keyof typeof LAYER_CONFIGS;
+/** Total number of stars to generate (viewport clips ~60%, so this is intentionally high) */
+const STAR_COUNT = 14500;
 
 interface Star {
   /** Distance from rotation center (multiplied by diagonal length for px) */
@@ -57,25 +54,68 @@ interface Star {
   rgbString: string;
 }
 
-function pickStarColor(rand: () => number): [number, number, number] {
-  const r = rand();
-  if (r < 0.6) return [255, 255, 255];
-  if (r < 0.75) return [200, 220, 255];
-  if (r < 0.85) return [255, 240, 220];
-  if (r < 0.93) return [255, 210, 170];
-  return [180, 200, 255];
+/** Generate a random apparent magnitude following realistic star-count distribution */
+function randomMagnitude(rand: () => number): number {
+  return 2 * Math.log10(rand() * MAG_CDF_RANGE + MAG_CDF_BASE);
 }
 
-function createStars(count: number, layer: Layer, rand: () => number): Star[] {
-  const config = LAYER_CONFIGS[layer];
+/**
+ * Derive visual radius from magnitude.
+ * Models the eye/camera PSF: brighter stars appear larger.
+ * mag 1 → ~3.0, mag 3 → ~1.6, mag 6.5 → ~0.5
+ */
+function radiusFromMag(mag: number, rand: () => number): number {
+  const base = 4.16 * Math.pow(10, -0.1415 * mag);
+  return base * (0.85 + rand() * 0.3);
+}
 
-  return Array.from({ length: count }, () => {
-    const [r, g, b] = pickStarColor(rand);
+/** Derive base opacity from magnitude. mag 1 → ~1.0, mag 6.5 → ~0.3 */
+function opacityFromMag(mag: number, rand: () => number): number {
+  const base = 1.0 - 0.127 * (mag - MAG_MIN);
+  return Math.max(0.2, base * (0.9 + rand() * 0.2));
+}
+
+/**
+ * Star color selection based on magnitude.
+ * Only bright stars (≤ mag ~2) show clear color to the naked eye;
+ * faint stars appear white due to scotopic (rod-dominated) vision.
+ */
+function pickStarColor(rand: () => number, mag: number): [number, number, number] {
+  const colorChance = mag <= 2 ? 0.6 : mag <= 3.5 ? 0.25 : mag <= 5 ? 0.08 : 0.03;
+
+  if (rand() > colorChance) {
+    if (mag > 4) return [255, 255, 255];
+    const tint = rand();
+    if (tint < 0.5) return [255, 255, 255];
+    if (tint < 0.75) return [250, 252, 255];
+    return [255, 253, 250];
+  }
+
+  const r = rand();
+  if (mag <= 2) {
+    if (r < 0.30) return [200, 220, 255]; // blue-white (B)
+    if (r < 0.55) return [255, 240, 220]; // yellow-white (F/G)
+    if (r < 0.80) return [255, 210, 170]; // orange (K)
+    return [255, 180, 140];              // red-orange (M)
+  }
+  if (mag <= 4) {
+    if (r < 0.35) return [220, 230, 255]; // subtle blue-white
+    if (r < 0.65) return [255, 245, 230]; // subtle warm
+    return [255, 225, 200];              // mild orange
+  }
+  if (r < 0.5) return [245, 248, 255];   // barely blue
+  return [255, 250, 245];                // barely warm
+}
+
+function createAllStars(rand: () => number): Star[] {
+  return Array.from({ length: STAR_COUNT }, () => {
+    const mag = randomMagnitude(rand);
+    const [r, g, b] = pickStarColor(rand, mag);
     return {
       distance: STAR_DISTANCE[0] + Math.sqrt(rand()) * (STAR_DISTANCE[1] - STAR_DISTANCE[0]),
       angle: rand() * TWO_PI,
-      radius: randRange(...config.radius, rand),
-      baseOpacity: randRange(...config.opacity, rand),
+      radius: radiusFromMag(mag, rand),
+      baseOpacity: opacityFromMag(mag, rand),
       twinkleSpeed: randRange(0.008, 0.033, rand),
       twinkleOffset: rand() * TWO_PI,
       r,
@@ -84,14 +124,6 @@ function createStars(count: number, layer: Layer, rand: () => number): Star[] {
       rgbString: `rgb(${r},${g},${b})`,
     };
   });
-}
-
-function createAllStars(rand: () => number): Star[] {
-  return [
-    ...createStars(13000, "far", rand),
-    ...createStars(1350, "mid", rand),
-    ...createStars(175, "near", rand),
-  ];
 }
 
 function createSkyGradient(ctx: CanvasRenderingContext2D, h: number): CanvasGradient {
