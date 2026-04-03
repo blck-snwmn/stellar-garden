@@ -1,7 +1,6 @@
 import { useRef, useEffect } from "react";
 
 const TWO_PI = Math.PI * 2;
-const MOUSE_LERP = 0.05;
 const GLOW_THRESHOLD = 1.2;
 const GLOW_RADIUS_SCALE = 4;
 const GLOW_ALPHA_SCALE = 0.15;
@@ -223,10 +222,6 @@ export default function StarField({
     if (!ctx) return;
 
     let animationId: number;
-    let targetMouseX = 0;
-    let targetMouseY = 0;
-    let mouseX = 0;
-    let mouseY = 0;
     let skyGradient: CanvasGradient;
 
     const resize = () => {
@@ -236,11 +231,6 @@ export default function StarField({
     };
     resize();
 
-    const handleMouseMove = (e: MouseEvent) => {
-      targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-      targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-    };
-
     let time = 0;
     const stars = starsRef.current;
 
@@ -249,29 +239,21 @@ export default function StarField({
       const w = canvas.width;
       const h = canvas.height;
 
-      mouseX += (targetMouseX - mouseX) * MOUSE_LERP;
-      mouseY += (targetMouseY - mouseY) * MOUSE_LERP;
-
       ctx.fillStyle = skyGradient;
       ctx.fillRect(0, 0, w, h);
 
-      const offsetX = mouseX * w * 0.01;
-      const offsetY = mouseY * h * 0.01;
-
-      drawStars(ctx, stars, w, h, time, speedMultiplier, offsetX, offsetY);
-      drawPolaris(ctx, w * CENTER_X + offsetX, h * CENTER_Y + offsetY);
+      drawStars(ctx, stars, w, h, time, speedMultiplier, 0, 0);
+      drawPolaris(ctx, w * CENTER_X, h * CENTER_Y);
 
       ctx.globalAlpha = 1;
       animationId = requestAnimationFrame(draw);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("resize", resize);
     animationId = requestAnimationFrame(draw);
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", resize);
     };
   }, [isExternalFrame, speedMultiplier]);
