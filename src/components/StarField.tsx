@@ -20,17 +20,24 @@ function randRange(min: number, max: number, rand: () => number): number {
 
 type Range = [min: number, max: number];
 
+/**
+ * Distance range from the rotation center (ratio to screen diagonal).
+ * Shared across all layers. In the polar rotation model, distance determines
+ * visual speed, so varying it per layer would also change star distribution.
+ * Like real celestial motion, all layers share the same distance range.
+ */
+const STAR_DISTANCE: Range = [0.0, 0.8];
+
+/** Layers only control appearance (size and brightness) */
 interface LayerConfig {
   radius: Range;
-  /** 中心からの距離レンジ（画面対角線に対する比率） */
-  distance: Range;
   opacity: Range;
 }
 
 const LAYER_CONFIGS = {
-  far: { radius: [0.3, 0.8], distance: [0.0, 0.3], opacity: [0.2, 0.5] },
-  mid: { radius: [0.6, 1.5], distance: [0.15, 0.55], opacity: [0.4, 0.75] },
-  near: { radius: [1.2, 2.5], distance: [0.35, 0.8], opacity: [0.6, 1.0] },
+  far: { radius: [0.5, 0.8], opacity: [0.3, 0.5] },
+  mid: { radius: [1.0, 1.8], opacity: [0.5, 0.8] },
+  near: { radius: [2.0, 3.0], opacity: [0.7, 1.0] },
 } satisfies Record<string, LayerConfig>;
 
 type Layer = keyof typeof LAYER_CONFIGS;
@@ -65,7 +72,7 @@ function createStars(count: number, layer: Layer, rand: () => number): Star[] {
   return Array.from({ length: count }, () => {
     const [r, g, b] = pickStarColor(rand);
     return {
-      distance: randRange(...config.distance, rand),
+      distance: STAR_DISTANCE[0] + Math.sqrt(rand()) * (STAR_DISTANCE[1] - STAR_DISTANCE[0]),
       angle: rand() * TWO_PI,
       radius: randRange(...config.radius, rand),
       baseOpacity: randRange(...config.opacity, rand),
@@ -81,9 +88,9 @@ function createStars(count: number, layer: Layer, rand: () => number): Star[] {
 
 function createAllStars(rand: () => number): Star[] {
   return [
-    ...createStars(1000, "far", rand),
-    ...createStars(350, "mid", rand),
-    ...createStars(150, "near", rand),
+    ...createStars(13000, "far", rand),
+    ...createStars(1350, "mid", rand),
+    ...createStars(175, "near", rand),
   ];
 }
 
