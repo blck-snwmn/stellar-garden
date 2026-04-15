@@ -100,18 +100,18 @@ function pickStarColor(rand: () => number, mag: number): [number, number, number
 
   const r = rand();
   if (mag <= 2) {
-    if (r < 0.30) return [200, 220, 255]; // blue-white (B)
+    if (r < 0.3) return [200, 220, 255]; // blue-white (B)
     if (r < 0.55) return [255, 240, 220]; // yellow-white (F/G)
-    if (r < 0.80) return [255, 210, 170]; // orange (K)
-    return [255, 180, 140];              // red-orange (M)
+    if (r < 0.8) return [255, 210, 170]; // orange (K)
+    return [255, 180, 140]; // red-orange (M)
   }
   if (mag <= 4) {
     if (r < 0.35) return [220, 230, 255]; // subtle blue-white
     if (r < 0.65) return [255, 245, 230]; // subtle warm
-    return [255, 225, 200];              // mild orange
+    return [255, 225, 200]; // mild orange
   }
-  if (r < 0.5) return [245, 248, 255];   // barely blue
-  return [255, 250, 245];                // barely warm
+  if (r < 0.5) return [245, 248, 255]; // barely blue
+  return [255, 250, 245]; // barely warm
 }
 
 function createAllStars(rand: () => number): Star[] {
@@ -190,11 +190,7 @@ function drawStars(
 }
 
 /** Draw Polaris (the pole star) */
-function drawPolaris(
-  ctx: CanvasRenderingContext2D,
-  cx: number,
-  cy: number,
-): void {
+function drawPolaris(ctx: CanvasRenderingContext2D, cx: number, cy: number): void {
   const glowRadius = 8;
   const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, glowRadius);
   glow.addColorStop(0, "rgba(255,248,235,0.25)");
@@ -308,13 +304,7 @@ export default function StarField({
   }, [isExternalFrame, speedMultiplier]);
 
   if (isExternalFrame) {
-    return (
-      <canvas
-        ref={canvasRef}
-        width={fixedWidth}
-        height={fixedHeight}
-      />
-    );
+    return <canvas ref={canvasRef} width={fixedWidth} height={fixedHeight} />;
   }
 
   return (
