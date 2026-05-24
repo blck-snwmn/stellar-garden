@@ -2,5 +2,14 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "local>blck-snwmn/renovate-config"
+  ],
+  "packageRules": [
+    {
+      "groupName": "Cloudflare Vite plugin and Wrangler",
+      "matchPackageNames": [
+        "@cloudflare/vite-plugin",
+        "wrangler"
+      ]
+    }
   ]
 }
