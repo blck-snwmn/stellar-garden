@@ -1,8 +1,8 @@
 packages:
   - .
 
-onlyBuiltDependencies:
-  - '@swc/core'
-  - esbuild
-  - sharp
-  - workerd
+allowBuilds:
+  '@swc/core': true
+  esbuild: true
+  sharp: true
+  workerd: true
