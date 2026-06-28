@@ -6,6 +6,7 @@
   "packageRules": [
     {
       "groupName": "Cloudflare Vite plugin and Wrangler",
+      "minimumGroupSize": 2,
       "matchPackageNames": [
         "@cloudflare/vite-plugin",
         "wrangler"
