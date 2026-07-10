@@ -14,6 +14,7 @@
 		"lint:fix": "oxlint --deny-warnings src/ remotion/ --fix",
 		"fmt": "oxfmt --write src/",
 		"fmt:check": "oxfmt --check src/",
+		"cf-typegen": "wrangler types --include-runtime=false",
 		"preview": "pnpm run build && vite preview",
 		"deploy": "pnpm run build && wrangler deploy",
 		"studio": "remotion studio remotion/index.ts",
