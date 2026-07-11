@@ -23,10 +23,10 @@ importers:
     devDependencies:
       '@cloudflare/vite-plugin':
         specifier: 1.42.3
-        version: 1.42.3(vite@8.1.3(@types/node@24.13.2)(esbuild@0.28.1)(terser@5.49.0))(workerd@1.20260625.1)(wrangler@4.105.0)
+        version: 1.42.3(vite@8.1.3(@types/node@24.13.3)(esbuild@0.28.1)(terser@5.49.0))(workerd@1.20260625.1)(wrangler@4.105.0)
       '@types/node':
-        specifier: 24.13.2
-        version: 24.13.2
+        specifier: 24.13.3
+        version: 24.13.3
       '@types/react':
         specifier: 19.2.17
         version: 19.2.17
@@ -35,7 +35,7 @@ importers:
         version: 19.2.3(@types/react@19.2.17)
       '@vitejs/plugin-react-swc':
         specifier: 4.3.1
-        version: 4.3.1(vite@8.1.3(@types/node@24.13.2)(esbuild@0.28.1)(terser@5.49.0))
+        version: 4.3.1(vite@8.1.3(@types/node@24.13.3)(esbuild@0.28.1)(terser@5.49.0))
       oxfmt:
         specifier: 0.58.0
         version: 0.58.0
@@ -50,7 +50,7 @@ importers:
         version: 6.0.3
       vite:
         specifier: 8.1.3
-        version: 8.1.3(@types/node@24.13.2)(esbuild@0.28.1)(terser@5.49.0)
+        version: 8.1.3(@types/node@24.13.3)(esbuild@0.28.1)(terser@5.49.0)
       wrangler:
         specifier: 4.105.0
         version: 4.105.0
@@ -1211,8 +1211,8 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@24.13.2':
-    resolution: {integrity: sha512-fRa09kZTgu8o71KFcDjUFuc7F+dEbZYZmkI0mg5YBTRs0yMKjYHsq/c0urDKeDb+D5qVgXOdFcuu+DZPKOITwA==}
+  '@types/node@24.13.3':
+    resolution: {integrity: sha512-Dh8vAsV36ig5wa9OX4pXvMc9D3Veibfw2wix0CUwYODLD8nkj9UsLjASr49nPg+2eKzxhBV+v7L8pXvT4e639Q==}
 
   '@types/react-dom@19.2.3':
     resolution: {integrity: sha512-jp2L/eY6fn+KgVVQAOqYItbF0VY/YApe5Mz2F0aykSO8gx31bYCZyvSeYxCHKvzHG5eZjc+zyaS5BrBWya2+kQ==}
@@ -2089,12 +2089,12 @@ snapshots:
     optionalDependencies:
       workerd: 1.20260625.1
 
-  '@cloudflare/vite-plugin@1.42.3(vite@8.1.3(@types/node@24.13.2)(esbuild@0.28.1)(terser@5.49.0))(workerd@1.20260625.1)(wrangler@4.105.0)':
+  '@cloudflare/vite-plugin@1.42.3(vite@8.1.3(@types/node@24.13.3)(esbuild@0.28.1)(terser@5.49.0))(workerd@1.20260625.1)(wrangler@4.105.0)':
     dependencies:
       '@cloudflare/unenv-preset': 2.16.1(unenv@2.0.0-rc.24)(workerd@1.20260625.1)
       miniflare: 4.20260625.0
       unenv: 2.0.0-rc.24
-      vite: 8.1.3(@types/node@24.13.2)(esbuild@0.28.1)(terser@5.49.0)
+      vite: 8.1.3(@types/node@24.13.3)(esbuild@0.28.1)(terser@5.49.0)
       wrangler: 4.105.0
       ws: 8.21.0
     transitivePeerDependencies:
@@ -2965,7 +2965,7 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@24.13.2':
+  '@types/node@24.13.3':
     dependencies:
       undici-types: 7.18.2
 
@@ -2977,11 +2977,11 @@ snapshots:
     dependencies:
       csstype: 3.2.3
 
-  '@vitejs/plugin-react-swc@4.3.1(vite@8.1.3(@types/node@24.13.2)(esbuild@0.28.1)(terser@5.49.0))':
+  '@vitejs/plugin-react-swc@4.3.1(vite@8.1.3(@types/node@24.13.3)(esbuild@0.28.1)(terser@5.49.0))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
       '@swc/core': 1.15.21
-      vite: 8.1.3(@types/node@24.13.2)(esbuild@0.28.1)(terser@5.49.0)
+      vite: 8.1.3(@types/node@24.13.3)(esbuild@0.28.1)(terser@5.49.0)
     transitivePeerDependencies:
       - '@swc/helpers'
 
@@ -3259,7 +3259,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 24.13.2
+      '@types/node': 24.13.3
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -3673,7 +3673,7 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  vite@8.1.3(@types/node@24.13.2)(esbuild@0.28.1)(terser@5.49.0):
+  vite@8.1.3(@types/node@24.13.3)(esbuild@0.28.1)(terser@5.49.0):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
@@ -3681,7 +3681,7 @@ snapshots:
       rolldown: 1.1.3
       tinyglobby: 0.2.17
     optionalDependencies:
-      '@types/node': 24.13.2
+      '@types/node': 24.13.3
       esbuild: 0.28.1
       fsevents: 2.3.3
       terser: 5.49.0
