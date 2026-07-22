@@ -19,7 +19,7 @@ importers:
         version: 19.2.7(react@19.2.7)
       remotion:
         specifier: ^4.0.443
-        version: 4.0.492(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+        version: 4.0.493(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
     devDependencies:
       '@cloudflare/vite-plugin':
         specifier: 1.45.0
@@ -1895,8 +1895,8 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  remotion@4.0.492:
-    resolution: {integrity: sha512-c+1KbC7HBgGI8Ay7f+Nchs3xknVlFrD/4S9+y+Km8CThnwbHmjgM5b8TA7iDy9GhAoU26TD5c84IzrJkjwYvcg==}
+  remotion@4.0.493:
+    resolution: {integrity: sha512-ptJRz79lhJFTJ/A9bI8XFb48w+jmG6f1uxaIAxZgS1cwE36LWYlQVyrjMJvcMH7x9YAsOi/j44EQknBHwkjfUQ==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
@@ -3708,7 +3708,7 @@ snapshots:
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
 
-  remotion@4.0.492(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
+  remotion@4.0.493(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
     dependencies:
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
