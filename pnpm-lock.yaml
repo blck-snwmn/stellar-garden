@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@remotion/cli':
-        specifier: ^4.0.443
+        specifier: ^4.0.495
         version: 4.0.495(@swc/core@1.15.21)(lightningcss@1.32.0)(postcss@8.5.22)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(supports-color@10.2.2)(typescript@7.0.2)
       react:
         specifier: ^19.2.0
