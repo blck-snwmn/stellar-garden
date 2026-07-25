@@ -18,7 +18,7 @@ importers:
         specifier: ^19.2.7
         version: 19.2.7(react@19.2.7)
       remotion:
-        specifier: ^4.0.443
+        specifier: ^4.0.495
         version: 4.0.495(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
     devDependencies:
       '@cloudflare/vite-plugin':
