@@ -21,7 +21,7 @@
 		"render": "remotion render remotion/index.ts StarField out/video.mp4"
 	},
 	"dependencies": {
-		"@remotion/cli": "4.0.495",
+		"@remotion/cli": "4.0.496",
 		"react": "19.2.7",
 		"react-dom": "19.2.7",
 		"remotion": "4.0.495"
