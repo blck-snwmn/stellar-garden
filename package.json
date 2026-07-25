@@ -21,10 +21,10 @@
 		"render": "remotion render remotion/index.ts StarField out/video.mp4"
 	},
 	"dependencies": {
-		"@remotion/cli": "^4.0.495",
-		"react": "^19.2.7",
-		"react-dom": "^19.2.7",
-		"remotion": "^4.0.495"
+		"@remotion/cli": "4.0.495",
+		"react": "19.2.7",
+		"react-dom": "19.2.7",
+		"remotion": "4.0.495"
 	},
 	"devDependencies": {
 		"@cloudflare/vite-plugin": "1.46.0",
@@ -41,7 +41,7 @@
 	},
 	"pnpm": {
 		"overrides": {
-			"vite": "^8.0.0-beta.13"
+			"vite": "8.1.5"
 		}
 	}
 }
