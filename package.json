@@ -36,12 +36,12 @@
 		"oxlint": "1.82.0",
 		"oxlint-tsgolint": "7.0.2001",
 		"typescript": "7.0.2",
-		"vite": "8.2.2",
+		"vite": "8.3.0",
 		"wrangler": "4.126.0"
 	},
 	"pnpm": {
 		"overrides": {
-			"vite": "8.2.2"
+			"vite": "8.3.0"
 		}
 	}
 }
