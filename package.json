@@ -24,7 +24,7 @@
 		"@remotion/cli": "4.0.526",
 		"react": "19.3.0",
 		"react-dom": "19.3.0",
-		"remotion": "4.0.525"
+		"remotion": "4.0.526"
 	},
 	"devDependencies": {
 		"@cloudflare/vite-plugin": "1.54.0",
