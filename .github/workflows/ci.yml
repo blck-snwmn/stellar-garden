@@ -26,17 +26,14 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - name: Generate Cloudflare types
+        run: pnpm run cf-typegen
+
       - name: Lint
         run: pnpm run lint
 
       - name: Format check
         run: pnpm run fmt:check
-
-      - name: Generate Cloudflare types
-        run: pnpm run cf-typegen
-
-      - name: Check generated Cloudflare types
-        run: git diff --exit-code -- worker-configuration.d.ts
 
       - name: Build
         run: pnpm run build

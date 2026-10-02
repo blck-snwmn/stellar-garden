@@ -5,7 +5,7 @@
     "useDefineForClassFields": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "types": ["vite/client", "./worker-configuration.d.ts"],
+    "types": ["vite/client", "./.cloudflare/types/index.d.ts"],
     "skipLibCheck": true,
 
     /* Bundler mode */
