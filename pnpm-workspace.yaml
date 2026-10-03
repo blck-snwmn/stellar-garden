@@ -7,9 +7,5 @@ allowBuilds:
   sharp: true
   workerd: true
 
-minimumReleaseAgeExclude:
-  - '@cloudflare/build-output-utils@0.8.5'
-  - '@cloudflare/config@0.23.0'
-  - cf@1.0.0-beta.12
 overrides:
   vite: '8.3.1'
