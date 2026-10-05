@@ -184,10 +184,10 @@ importers:
     devDependencies:
       '@cloudflare/vite-plugin':
         specifier: 2.0.0-beta.sha-52b0dc0e9
-        version: 2.0.0-beta.sha-52b0dc0e9(@types/node@24.19.0)(vite@8.3.2(@types/node@24.19.0)(esbuild@0.28.1)(terser@5.49.0))(workerd@1.20260926.1)
+        version: 2.0.0-beta.sha-52b0dc0e9(@types/node@24.19.1)(vite@8.3.2(@types/node@24.19.1)(esbuild@0.28.1)(terser@5.49.0))(workerd@1.20260926.1)
       '@types/node':
-        specifier: 24.19.0
-        version: 24.19.0
+        specifier: 24.19.1
+        version: 24.19.1
       '@types/react':
         specifier: 19.3.0
         version: 19.3.0
@@ -196,10 +196,10 @@ importers:
         version: 19.3.0(@types/react@19.3.0)
       '@vitejs/plugin-react-swc':
         specifier: 4.3.3
-        version: 4.3.3(vite@8.3.2(@types/node@24.19.0)(esbuild@0.28.1)(terser@5.49.0))
+        version: 4.3.3(vite@8.3.2(@types/node@24.19.1)(esbuild@0.28.1)(terser@5.49.0))
       cf:
         specifier: 1.0.0-beta.12
-        version: 1.0.0-beta.12(@types/node@24.19.0)
+        version: 1.0.0-beta.12(@types/node@24.19.1)
       oxfmt:
         specifier: 0.71.0
         version: 0.71.0
@@ -214,10 +214,10 @@ importers:
         version: 7.0.2
       vite:
         specifier: 8.3.2
-        version: 8.3.2(@types/node@24.19.0)(esbuild@0.28.1)(terser@5.49.0)
+        version: 8.3.2(@types/node@24.19.1)(esbuild@0.28.1)(terser@5.49.0)
       wrangler:
         specifier: 4.143.1
-        version: 4.143.1(@types/node@24.19.0)
+        version: 4.143.1(@types/node@24.19.1)
 
 packages:
 
@@ -1617,8 +1617,8 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@24.19.0':
-    resolution: {integrity: sha512-zY+5tKxXdhGh1PYI0ac+7juvEu4OI6vWtVVoj5i2m42jxAY1U+zHGt6QCyOFwykdP62sM3MJ9stoYYUw5aCWew==}
+  '@types/node@24.19.1':
+    resolution: {integrity: sha512-aS3/DG0oM05K0RIXXP+hKjinGG5IgSSVGzswZxW3O0sS3pH4/fycXundUC9XsszgKCk4gHXylTEK6hyFxVxnoQ==}
 
   '@types/react-dom@19.3.0':
     resolution: {integrity: sha512-ZI7bU42mZXXKHn/qNLEw2IrbiINU7X5+vfgdixBHkCNpYWXjKgfQ/P+uyGb5CjOLB9UcnTeg3rylQtV2hym44Q==}
@@ -2846,18 +2846,18 @@ snapshots:
 
   '@cloudflare/kv-asset-handler@0.5.0': {}
 
-  '@cloudflare/runtime-types@0.1.6(@types/node@24.19.0)':
+  '@cloudflare/runtime-types@0.1.6(@types/node@24.19.1)':
     dependencies:
-      miniflare: 5.20260930.0-alpha(@types/node@24.19.0)
+      miniflare: 5.20260930.0-alpha(@types/node@24.19.1)
       workerd: 1.20260930.2
     transitivePeerDependencies:
       - '@types/node'
       - bufferutil
       - utf-8-validate
 
-  '@cloudflare/runtime-types@0.1.7(@types/node@24.19.0)':
+  '@cloudflare/runtime-types@0.1.7(@types/node@24.19.1)':
     dependencies:
-      miniflare: 5.20261001.0-alpha(@types/node@24.19.0)
+      miniflare: 5.20261001.0-alpha(@types/node@24.19.1)
       workerd: 1.20261001.1
     transitivePeerDependencies:
       - '@types/node'
@@ -2870,15 +2870,15 @@ snapshots:
     optionalDependencies:
       workerd: 1.20260926.1
 
-  '@cloudflare/vite-plugin@2.0.0-beta.sha-52b0dc0e9(@types/node@24.19.0)(vite@8.3.2(@types/node@24.19.0)(esbuild@0.28.1)(terser@5.49.0))(workerd@1.20260926.1)':
+  '@cloudflare/vite-plugin@2.0.0-beta.sha-52b0dc0e9(@types/node@24.19.1)(vite@8.3.2(@types/node@24.19.1)(esbuild@0.28.1)(terser@5.49.0))(workerd@1.20260926.1)':
     dependencies:
       '@cloudflare/build-output-utils': 0.8.4
       '@cloudflare/config': 0.22.0
-      '@cloudflare/runtime-types': 0.1.6(@types/node@24.19.0)
+      '@cloudflare/runtime-types': 0.1.6(@types/node@24.19.1)
       '@cloudflare/unenv-preset': 2.16.2(unenv@2.0.0-rc.24)(workerd@1.20260926.1)
-      miniflare: 5.20260930.0-alpha(@types/node@24.19.0)
+      miniflare: 5.20260930.0-alpha(@types/node@24.19.1)
       unenv: 2.0.0-rc.24
-      vite: 8.3.2(@types/node@24.19.0)(esbuild@0.28.1)(terser@5.49.0)
+      vite: 8.3.2(@types/node@24.19.1)(esbuild@0.28.1)(terser@5.49.0)
       ws: 8.21.0
     transitivePeerDependencies:
       - '@types/node'
@@ -3923,7 +3923,7 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@24.19.0':
+  '@types/node@24.19.1':
     dependencies:
       undici-types: 7.24.6
 
@@ -3995,11 +3995,11 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
-  '@vitejs/plugin-react-swc@4.3.3(vite@8.3.2(@types/node@24.19.0)(esbuild@0.28.1)(terser@5.49.0))':
+  '@vitejs/plugin-react-swc@4.3.3(vite@8.3.2(@types/node@24.19.1)(esbuild@0.28.1)(terser@5.49.0))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
       '@swc/core': 1.15.46
-      vite: 8.3.2(@types/node@24.19.0)(esbuild@0.28.1)(terser@5.49.0)
+      vite: 8.3.2(@types/node@24.19.1)(esbuild@0.28.1)(terser@5.49.0)
     transitivePeerDependencies:
       - '@swc/helpers'
 
@@ -4131,14 +4131,14 @@ snapshots:
 
   caniuse-lite@1.0.30001806: {}
 
-  cf@1.0.0-beta.12(@types/node@24.19.0):
+  cf@1.0.0-beta.12(@types/node@24.19.1):
     dependencies:
       '@cloudflare/build-output-utils': 0.8.5
       '@cloudflare/codemods': 0.4.0
       '@cloudflare/config': 0.23.0
-      '@cloudflare/runtime-types': 0.1.7(@types/node@24.19.0)
+      '@cloudflare/runtime-types': 0.1.7(@types/node@24.19.1)
       blake3-wasm: 2.1.5
-      miniflare: 5.20260930.0-alpha(@types/node@24.19.0)
+      miniflare: 5.20260930.0-alpha(@types/node@24.19.1)
       minisearch: 7.2.0
     transitivePeerDependencies:
       - '@types/node'
@@ -4334,7 +4334,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -4442,10 +4442,10 @@ snapshots:
 
   mimic-fn@2.1.0: {}
 
-  miniflare@5.20260926.1-alpha(@types/node@24.19.0):
+  miniflare@5.20260926.1-alpha(@types/node@24.19.1):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
-      sharp: 0.35.4(@types/node@24.19.0)
+      sharp: 0.35.4(@types/node@24.19.1)
       undici: 7.29.1
       workerd: 1.20260926.1
       ws: 8.21.0
@@ -4455,10 +4455,10 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  miniflare@5.20260930.0-alpha(@types/node@24.19.0):
+  miniflare@5.20260930.0-alpha(@types/node@24.19.1):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
-      sharp: 0.35.4(@types/node@24.19.0)
+      sharp: 0.35.4(@types/node@24.19.1)
       undici: 7.29.1
       workerd: 1.20260930.2
       ws: 8.21.0
@@ -4468,10 +4468,10 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  miniflare@5.20261001.0-alpha(@types/node@24.19.0):
+  miniflare@5.20261001.0-alpha(@types/node@24.19.1):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
-      sharp: 0.35.4(@types/node@24.19.0)
+      sharp: 0.35.4(@types/node@24.19.1)
       undici: 7.29.1
       workerd: 1.20261001.1
       ws: 8.21.0
@@ -4696,7 +4696,7 @@ snapshots:
 
   semver@7.8.5: {}
 
-  sharp@0.35.4(@types/node@24.19.0):
+  sharp@0.35.4(@types/node@24.19.1):
     dependencies:
       '@img/colour': 1.1.0
       detect-libc: 2.1.2
@@ -4727,7 +4727,7 @@ snapshots:
       '@img/sharp-win32-arm64': 0.35.4
       '@img/sharp-win32-ia32': 0.35.4
       '@img/sharp-win32-x64': 0.35.4
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
 
   shebang-command@2.0.0:
     dependencies:
@@ -4845,7 +4845,7 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  vite@8.3.2(@types/node@24.19.0)(esbuild@0.28.1)(terser@5.49.0):
+  vite@8.3.2(@types/node@24.19.1)(esbuild@0.28.1)(terser@5.49.0):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
@@ -4853,7 +4853,7 @@ snapshots:
       rolldown: 1.2.11
       tinyglobby: 0.2.17
     optionalDependencies:
-      '@types/node': 24.19.0
+      '@types/node': 24.19.1
       esbuild: 0.28.1
       fsevents: 2.3.3
       terser: 5.49.0
@@ -4933,13 +4933,13 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20261001.1
       '@cloudflare/workerd-windows-64': 1.20261001.1
 
-  wrangler@4.143.1(@types/node@24.19.0):
+  wrangler@4.143.1(@types/node@24.19.1):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.5.0
       '@cloudflare/unenv-preset': 2.16.2(unenv@2.0.0-rc.24)(workerd@1.20260926.1)
       blake3-wasm: 2.1.5
       esbuild: 0.28.1
-      miniflare: 5.20260926.1-alpha(@types/node@24.19.0)
+      miniflare: 5.20260926.1-alpha(@types/node@24.19.1)
       path-to-regexp: 6.3.0
       unenv: 2.0.0-rc.24
       workerd: 1.20260926.1
