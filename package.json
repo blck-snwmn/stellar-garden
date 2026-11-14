@@ -34,7 +34,7 @@
 		"@vitejs/plugin-react-swc": "4.3.3",
 		"cf": "1.0.0-beta.28",
 		"oxfmt": "0.77.0",
-		"oxlint": "1.91.0",
+		"oxlint": "1.92.0",
 		"oxlint-tsgolint": "7.0.2006",
 		"typescript": "7.0.2",
 		"vite": "8.3.6",
